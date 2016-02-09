@@ -11,10 +11,15 @@
         </h:head>
 
         <h:body>
-            <p:outputLabel value="Username: "/>
+            <h:panelGrid
+                columns="2">
+                
+                <p:outputLabel value="Username: "/>
                 <p:inputText/>
-            <p:outputLabel value="Password:"/>
-                <p:inputText/>               
+                <p:outputLabel value="Password:"/>
+                <p:inputText/>     
+                
+            </h:panelGrid>
         </h:body>
     </f:view>
 </html>
