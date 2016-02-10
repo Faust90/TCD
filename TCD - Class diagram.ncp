@@ -1,0 +1,106 @@
+<Project>
+  <Name>TCD</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Main diagram</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>LoginBacking</Name>
+        <Access>Public</Access>
+        <Location left="48" top="35" />
+        <Size width="217" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">private String loginUsername { get; set; }</Member>
+        <Member type="Property">private String loginPassword { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CharListBacking</Name>
+        <Access>Public</Access>
+        <Location left="413" top="376" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CharDetailBacking</Name>
+        <Access>Public</Access>
+        <Location left="793" top="421" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Character</Name>
+        <Access>Public</Access>
+        <Location left="413" top="35" />
+        <Size width="178" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">private int agility { get; set; }</Member>
+        <Member type="Property">private int strenght { get; set; }</Member>
+        <Member type="Property">private int thoughness { get; set; }</Member>
+        <Member type="Property">private int mind { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Role</Name>
+        <Access>Public</Access>
+        <Location left="760" top="17" />
+        <Size width="282" height="149" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">private String roleName { get; set; }</Member>
+        <Member type="Property">private String roleDesc { get; set; }</Member>
+        <Member type="Property">private AttributeEnum primaryAttribute { get; set; }</Member>
+        <Member type="Property">private AttributeEnum secondaryAttribute { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Origin</Name>
+        <Access>Public</Access>
+        <Location left="760" top="189" />
+        <Size width="275" height="136" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">private String originName { get; set; }</Member>
+        <Member type="Property">private String originDesc { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="3" second="4">
+        <Label>has</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>616</X>
+          <Y>100</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..*</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="5">
+        <Label>has</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>616</X>
+          <Y>216</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="3">
+        <Label>lists</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
