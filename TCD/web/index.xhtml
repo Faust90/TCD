@@ -11,15 +11,23 @@
         </h:head>
 
         <h:body>
-            <h:panelGrid
-                columns="2">
-                
-                <p:outputLabel value="Username: "/>
-                <p:inputText/>
-                <p:outputLabel value="Password:"/>
-                <p:inputText/>     
-                
-            </h:panelGrid>
+            <h:form>
+                <p:accordionPanel>
+                    <p:tab title="Login">
+                        <h:panelGrid
+                            styleClass=""
+                            columns="2">
+
+                            <p:outputLabel value="Username: "/>
+                            <p:inputText/>
+                            <p:outputLabel value="Password:"/>
+                            <p:inputText/>     
+
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Nulla di che"/>
+                </p:accordionPanel>
+            </h:form>
         </h:body>
     </f:view>
 </html>
