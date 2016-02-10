@@ -7,99 +7,270 @@
       <Entity type="Class">
         <Name>LoginBacking</Name>
         <Access>Public</Access>
-        <Location left="48" top="35" />
-        <Size width="217" height="111" />
+        <Location left="28" top="796" />
+        <Size width="217" height="145" />
         <Collapsed>False</Collapsed>
-        <Member type="Property">private String loginUsername { get; set; }</Member>
-        <Member type="Property">private String loginPassword { get; set; }</Member>
+        <Member type="Field">private String loginUsername</Member>
+        <Member type="Field">private String loginPassword</Member>
+        <Member type="Method">public void doLogin()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>CharListBacking</Name>
         <Access>Public</Access>
-        <Location left="413" top="376" />
-        <Size width="162" height="216" />
+        <Location left="374" top="1259" />
+        <Size width="238" height="216" />
         <Collapsed>False</Collapsed>
+        <Member type="Method">public void openCharacterDetail()</Member>
+        <Member type="Method">public void createCharacter()</Member>
+        <Member type="Method">public void retrieveCharactersList()</Member>
+        <Member type="Method">public void doLogout()</Member>
+        <Member type="Method">public void getCharactersNumber()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>CharDetailBacking</Name>
         <Access>Public</Access>
-        <Location left="793" top="421" />
-        <Size width="162" height="216" />
+        <Location left="310" top="730" />
+        <Size width="365" height="485" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private int strenghtValue</Member>
+        <Member type="Field">private int agilityValue</Member>
+        <Member type="Field">private int toughnessValue</Member>
+        <Member type="Field">private int mindValue</Member>
+        <Member type="Field">private int unassignedAttributePoints</Member>
+        <Member type="Field">private int roleSelectedValue</Member>
+        <Member type="Field">private int originSelectedValue</Member>
+        <Member type="Field">private int mediumHpValue</Member>
+        <Member type="Field">private String nameValue</Member>
+        <Member type="Method">public void saveCharacter()</Member>
+        <Member type="Method">public void deleteCharacter()</Member>
+        <Member type="Method">public void addToStrenght()</Member>
+        <Member type="Method">public void addToAgility()</Member>
+        <Member type="Method">public void addToToughness()</Member>
+        <Member type="Method">public void addToMind()</Member>
+        <Member type="Method">public void subtractToStrenght()</Member>
+        <Member type="Method">public void subtractToAgility()</Member>
+        <Member type="Method">public void subtractToToughness()</Member>
+        <Member type="Method">public void subtractToMind()</Member>
+        <Member type="Method">public void calculateMediumHp()</Member>
+        <Member type="Method">public void getAttack()</Member>
+        <Member type="Method">public void getDefense()</Member>
+        <Member type="Method">public void getBlock()</Member>
+        <Member type="Method">public void getEnergySlots()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Character</Name>
         <Access>Public</Access>
-        <Location left="413" top="35" />
-        <Size width="178" height="216" />
+        <Location left="1022" top="880" />
+        <Size width="288" height="230" />
         <Collapsed>False</Collapsed>
-        <Member type="Property">private int agility { get; set; }</Member>
-        <Member type="Property">private int strenght { get; set; }</Member>
-        <Member type="Property">private int thoughness { get; set; }</Member>
-        <Member type="Property">private int mind { get; set; }</Member>
+        <Member type="Field">private int characterId</Member>
+        <Member type="Field">private int strenght</Member>
+        <Member type="Field">private int agility</Member>
+        <Member type="Field">private int thoughness</Member>
+        <Member type="Field">private int mind</Member>
+        <Member type="Field">private int mediumHp</Member>
+        <Member type="Field">int characterLevel</Member>
+        <Member type="Field">private String characterName</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Role</Name>
         <Access>Public</Access>
-        <Location left="760" top="17" />
-        <Size width="282" height="149" />
+        <Location left="731" top="382" />
+        <Size width="282" height="162" />
         <Collapsed>False</Collapsed>
-        <Member type="Property">private String roleName { get; set; }</Member>
-        <Member type="Property">private String roleDesc { get; set; }</Member>
-        <Member type="Property">private AttributeEnum primaryAttribute { get; set; }</Member>
-        <Member type="Property">private AttributeEnum secondaryAttribute { get; set; }</Member>
+        <Member type="Field">private int roleId</Member>
+        <Member type="Field">private String roleName</Member>
+        <Member type="Field">private String roleDesc</Member>
+        <Member type="Field">private AttributeEnum primaryAttribute</Member>
+        <Member type="Field">private AttributeEnum secondaryAttribute</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Origin</Name>
+        <Name>User</Name>
         <Access>Public</Access>
-        <Location left="760" top="189" />
-        <Size width="275" height="136" />
+        <Location left="28" top="1282" />
+        <Size width="217" height="134" />
         <Collapsed>False</Collapsed>
-        <Member type="Property">private String originName { get; set; }</Member>
-        <Member type="Property">private String originDesc { get; set; }</Member>
+        <Member type="Field">private String userId</Member>
+        <Member type="Field">private String userName</Member>
+        <Member type="Field">private String password</Member>
         <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Skill</Name>
+        <Access>Public</Access>
+        <Location left="1311" top="382" />
+        <Size width="162" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int skillId</Member>
+        <Member type="Field">private int skillLevel</Member>
+        <Member type="Field">private String skillName</Member>
+        <Member type="Field">private String skillDesc</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>OriginEnum</Name>
+        <Access>Public</Access>
+        <Location left="810" top="584" />
+        <Size width="162" height="231" />
+        <Collapsed>False</Collapsed>
+        <Value>Brute</Value>
+        <Value>Fanatic</Value>
+        <Value>Exemplar</Value>
+        <Value>Brawler</Value>
+        <Value>DarkOrigin</Value>
+        <Value>LightBringrer</Value>
+        <Value>Merchant</Value>
+        <Value>Hospitaler</Value>
+        <Value>Duelist</Value>
+        <Value>Runist</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>AttributeEnum</Name>
+        <Access>Public</Access>
+        <Location left="825" top="157" />
+        <Size width="162" height="129" />
+        <Collapsed>False</Collapsed>
+        <Value>Strenght</Value>
+        <Value>Agility</Value>
+        <Value>Toughness</Value>
+        <Value>Mind</Value>
       </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="3" second="4">
         <Label>has</Label>
-        <StartOrientation>Horizontal</StartOrientation>
+        <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>616</X>
-          <Y>100</Y>
+          <X>1224</X>
+          <Y>855</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1103</X>
+          <Y>518</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartMultiplicity>0..*</StartMultiplicity>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
-      <Relationship type="Association" first="3" second="5">
-        <Label>has</Label>
+      <Relationship type="Association" first="1" second="3">
+        <Label>lists</Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>616</X>
-          <Y>216</Y>
+          <X>716</X>
+          <Y>1401</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>995</X>
+          <Y>1033</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="4">
+        <Label>lists</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>458</X>
+          <Y>612</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="5">
+        <Label>refers</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="3">
+        <Label>manage</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>704</X>
+          <Y>948</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>997</X>
+          <Y>948</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartMultiplicity>1</StartMultiplicity>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
-      <Relationship type="Association" first="1" second="3">
-        <Label>lists</Label>
+      <Relationship type="Association" first="0" second="5">
+        <Label>stores</Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>0..*</EndMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="6">
+        <Label>has</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="7">
+        <Label>lists</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>565</X>
+          <Y>642</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="7">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1125</X>
+          <Y>847</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1011</X>
+          <Y>659</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..*</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="8">
+        <Label>has Primary and Secondary</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..*</StartMultiplicity>
+        <EndMultiplicity>2</EndMultiplicity>
       </Relationship>
     </Relationships>
   </ProjectItem>
