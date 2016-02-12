@@ -2,37 +2,117 @@
   <Name>TCD</Name>
   <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
     <Name>TCD web</Name>
-    <Language>CSharp</Language>
+    <Language>Java</Language>
     <Entities>
       <Entity type="Class">
-        <Name>LoginBacking</Name>
+        <Name>TCDService</Name>
         <Access>Public</Access>
-        <Location left="48" top="986" />
-        <Size width="217" height="145" />
+        <Location left="1034" top="1166" />
+        <Size width="217" height="162" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private String loginUsername</Member>
-        <Member type="Field">private String loginPassword</Member>
-        <Member type="Method">public void doLogin()</Member>
+        <Member type="Method">public List&lt;Character&gt; getCharacterList()</Member>
+        <Member type="Method">public List&lt;Role&gt; getRoleList()</Member>
+        <Member type="Method">public void saveCharacter()</Member>
+        <Member type="Method">public User doLogin()</Member>
+        <Member type="Method">private List&lt;Skill&gt; getSkillList()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>TCDServiceLocal</Name>
+        <Access>Public</Access>
+        <Location left="550" top="1166" />
+        <Size width="315" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">List&lt;Character&gt; getCharacterList()</Member>
+        <Member type="Method">List&lt;Role&gt; getRoleList()</Member>
+        <Member type="Method">void saveCharacter()</Member>
+        <Member type="Method">User doLogin()</Member>
+      </Entity>
+      <Entity type="Enum">
+        <Name>AttributeEnum</Name>
+        <Access>Public</Access>
+        <Location left="1034" top="220" />
+        <Size width="217" height="129" />
+        <Collapsed>False</Collapsed>
+        <Value>STRENGHT</Value>
+        <Value>AGILITY</Value>
+        <Value>TOUGHNESS</Value>
+        <Value>MIND</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>OriginEnum</Name>
+        <Access>Public</Access>
+        <Location left="1034" top="650" />
+        <Size width="217" height="231" />
+        <Collapsed>False</Collapsed>
+        <Value>BRUTE</Value>
+        <Value>FANATIC</Value>
+        <Value>EXEMPLAR</Value>
+        <Value>BRAWLER</Value>
+        <Value>DARKORIGIN</Value>
+        <Value>LIGHTBRINGER</Value>
+        <Value>MERCHANT</Value>
+        <Value>HOSPITALER</Value>
+        <Value>DUELIST</Value>
+        <Value>RUNIST</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>Skill</Name>
+        <Access>Public</Access>
+        <Location left="1601" top="392" />
+        <Size width="162" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int skillId</Member>
+        <Member type="Field">private int skillLevel</Member>
+        <Member type="Field">private String skillName</Member>
+        <Member type="Field">private String skillDesc</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>CharListBacking</Name>
+        <Name>User</Name>
         <Access>Public</Access>
-        <Location left="490" top="1232" />
-        <Size width="313" height="162" />
+        <Location left="108" top="1412" />
+        <Size width="217" height="162" />
         <Collapsed>False</Collapsed>
-        <Member type="Method">public void openCharacterDetail()</Member>
-        <Member type="Method">public void createCharacter()</Member>
-        <Member type="Method">public void retrieveCharactersList()</Member>
-        <Member type="Method">public void doLogout()</Member>
-        <Member type="Method">public int getCharactersNumber()</Member>
+        <Member type="Field">private String userId</Member>
+        <Member type="Field">private String userName</Member>
+        <Member type="Field">private String password</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Role</Name>
+        <Access>Public</Access>
+        <Location left="1034" top="447" />
+        <Size width="217" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int roleId</Member>
+        <Member type="Field">private String roleName</Member>
+        <Member type="Field">private String roleDesc</Member>
+        <Member type="Field">private AttributeEnum primaryAttribute</Member>
+        <Member type="Field">private AttributeEnum secondaryAttribute</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Character</Name>
+        <Access>Public</Access>
+        <Location left="1342" top="866" />
+        <Size width="288" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int characterId</Member>
+        <Member type="Field">private int strenght</Member>
+        <Member type="Field">private int agility</Member>
+        <Member type="Field">private int thoughness</Member>
+        <Member type="Field">private int mind</Member>
+        <Member type="Field">private int mediumHp</Member>
+        <Member type="Field">private int characterLevel</Member>
+        <Member type="Field">private String characterName</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>CharDetailBacking</Name>
         <Access>Public</Access>
-        <Location left="490" top="347" />
-        <Size width="313" height="485" />
+        <Location left="548" top="527" />
+        <Size width="313" height="502" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int strenghtValue</Member>
         <Member type="Field">private int agilityValue</Member>
@@ -61,266 +141,66 @@
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Character</Name>
+        <Name>CharListBacking</Name>
         <Access>Public</Access>
-        <Location left="1282" top="686" />
-        <Size width="288" height="230" />
+        <Location left="550" top="1412" />
+        <Size width="313" height="162" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private int characterId</Member>
-        <Member type="Field">private int strenght</Member>
-        <Member type="Field">private int agility</Member>
-        <Member type="Field">private int thoughness</Member>
-        <Member type="Field">private int mind</Member>
-        <Member type="Field">private int mediumHp</Member>
-        <Member type="Field">int characterLevel</Member>
-        <Member type="Field">private String characterName</Member>
+        <Member type="Method">public void openCharacterDetail()</Member>
+        <Member type="Method">public void createCharacter()</Member>
+        <Member type="Method">public void retrieveCharactersList()</Member>
+        <Member type="Method">public void doLogout()</Member>
+        <Member type="Method">public int getCharactersNumber()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Role</Name>
+        <Name>LoginBacking</Name>
         <Access>Public</Access>
-        <Location left="974" top="267" />
-        <Size width="217" height="162" />
+        <Location left="108" top="1166" />
+        <Size width="217" height="145" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private int roleId</Member>
-        <Member type="Field">private String roleName</Member>
-        <Member type="Field">private String roleDesc</Member>
-        <Member type="Field">private AttributeEnum primaryAttribute</Member>
-        <Member type="Field">private AttributeEnum secondaryAttribute</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>User</Name>
-        <Access>Public</Access>
-        <Location left="48" top="1232" />
-        <Size width="217" height="162" />
-        <Collapsed>False</Collapsed>
-        <Member type="Field">private String userId</Member>
-        <Member type="Field">private String userName</Member>
-        <Member type="Field">private String password</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>Skill</Name>
-        <Access>Public</Access>
-        <Location left="1541" top="212" />
-        <Size width="162" height="145" />
-        <Collapsed>False</Collapsed>
-        <Member type="Field">private int skillId</Member>
-        <Member type="Field">private int skillLevel</Member>
-        <Member type="Field">private String skillName</Member>
-        <Member type="Field">private String skillDesc</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Enum">
-        <Name>OriginEnum</Name>
-        <Access>Public</Access>
-        <Location left="974" top="470" />
-        <Size width="217" height="231" />
-        <Collapsed>False</Collapsed>
-        <Value>Brute</Value>
-        <Value>Fanatic</Value>
-        <Value>Exemplar</Value>
-        <Value>Brawler</Value>
-        <Value>DarkOrigin</Value>
-        <Value>LightBringrer</Value>
-        <Value>Merchant</Value>
-        <Value>Hospitaler</Value>
-        <Value>Duelist</Value>
-        <Value>Runist</Value>
-      </Entity>
-      <Entity type="Enum">
-        <Name>AttributeEnum</Name>
-        <Access>Public</Access>
-        <Location left="974" top="40" />
-        <Size width="217" height="129" />
-        <Collapsed>False</Collapsed>
-        <Value>Strenght</Value>
-        <Value>Agility</Value>
-        <Value>Toughness</Value>
-        <Value>Mind</Value>
-      </Entity>
-      <Entity type="Interface">
-        <Name>TCDServiceLocal</Name>
-        <Access>Public</Access>
-        <Location left="488" top="986" />
-        <Size width="315" height="145" />
-        <Collapsed>False</Collapsed>
-        <Member type="Method">list&lt;Character&gt; getCharacterList()</Member>
-        <Member type="Method">list&lt;Role&gt; getRoleList()</Member>
-        <Member type="Method">void saveCharacter()</Member>
-        <Member type="Method">User doLogin()</Member>
-      </Entity>
-      <Entity type="Class">
-        <Name>TCDService</Name>
-        <Access>Public</Access>
-        <Location left="974" top="986" />
-        <Size width="217" height="162" />
-        <Collapsed>False</Collapsed>
-        <Member type="Method">public list&lt;Character&gt; getCharacterList()</Member>
-        <Member type="Method">public list&lt;Role&gt; getRoleList()</Member>
-        <Member type="Method">public void saveCharacter()</Member>
-        <Member type="Method">public User doLogin()</Member>
-        <Member type="Method">private list&lt;Skill&gt; getSkillList()</Member>
+        <Member type="Field">private String loginUsername</Member>
+        <Member type="Field">private String loginPassword</Member>
+        <Member type="Method">public void doLogin()</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Association" first="3" second="4">
-        <Label>has</Label>
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1529</X>
-          <Y>661</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>1281</X>
-          <Y>403</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-        <StartRole>- role: list&lt;Role&gt;</StartRole>
-        <StartMultiplicity>0..*</StartMultiplicity>
-        <EndMultiplicity>1</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Association" first="1" second="5">
-        <Label>refers</Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-        <StartRole>+ user: User</StartRole>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>1</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Association" first="2" second="3">
-        <Label>manage</Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>828</X>
-          <Y>754</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>1257</X>
-          <Y>754</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-        <StartRole>- character: list&lt;Character&gt;</StartRole>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>1</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Association" first="0" second="5">
-        <Label>stores</Label>
+      <Relationship type="Association" first="8" second="1">
+        <Label>uses</Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
-        <StartRole>+ user: User</StartRole>
+        <StartRole>- tcdService: TCDServiceLocal</StartRole>
         <StartMultiplicity>1</StartMultiplicity>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
-      <Relationship type="Association" first="3" second="7">
-        <Label>has</Label>
-        <StartOrientation>Vertical</StartOrientation>
+      <Relationship type="Realization" first="0" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1393</X>
-          <Y>656</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>1229</X>
-          <Y>534</Y>
-        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="10" second="1">
+        <Label>uses</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
-        <StartRole>- origin: list&lt;Origin&gt;</StartRole>
-        <StartMultiplicity>0..*</StartMultiplicity>
+        <StartRole>- tcdService: TCDServiceLocal</StartRole>
+        <StartMultiplicity>1</StartMultiplicity>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
-      <Relationship type="Association" first="2" second="4">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>828</X>
-          <Y>406</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>949</X>
-          <Y>406</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Composition</AssociationType>
-        <StartRole>- roleList: list&lt;Role&gt;</StartRole>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>1..*</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Association" first="2" second="7">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>828</X>
-          <Y>530</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>949</X>
-          <Y>530</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Composition</AssociationType>
-        <StartRole>- originList: list&lt;OriginEnum&gt;</StartRole>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>1..*</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Association" first="1" second="3">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>871</X>
-          <Y>1326</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Composition</AssociationType>
-        <StartRole>- characterList: list&lt;Character&gt;</StartRole>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>1..*</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Association" first="4" second="6">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Composition</AssociationType>
-        <StartRole>- skillsList: list&lt;Skill&gt;</StartRole>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>5</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Association" first="4" second="8">
-        <Label>
-        </Label>
+      <Relationship type="Association" first="9" second="1">
+        <Label>uses</Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
+        <StartRole>- tcdService: TCDServiceLocal</StartRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
-      <Relationship type="Association" first="4" second="8">
-        <Label>
-        </Label>
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
-      <Relationship type="Association" first="4" second="8">
+      <Relationship type="Association" first="6" second="2">
         <Label>has</Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
@@ -331,38 +211,146 @@
         <StartMultiplicity>0..*</StartMultiplicity>
         <EndMultiplicity>2</EndMultiplicity>
       </Relationship>
-      <Relationship type="Association" first="1" second="9">
-        <Label>uses</Label>
+      <Relationship type="Association" first="6" second="2">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
-        <StartRole>- tcdService: TCDServiceLocal</StartRole>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
-      <Relationship type="Association" first="0" second="9">
-        <Label>uses</Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-        <StartRole>- tcdService: TCDServiceLocal</StartRole>
-        <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>1</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Realization" first="10" second="9">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-      </Relationship>
-      <Relationship type="Association" first="2" second="9">
-        <Label>uses</Label>
+      <Relationship type="Association" first="6" second="2">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
-        <StartRole>- tcdService: TCDServiceLocal</StartRole>
+      </Relationship>
+      <Relationship type="Association" first="6" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartRole>- skillsList: List&lt;Skill&gt;</StartRole>
         <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>5</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="7">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>931</X>
+          <Y>1506</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartRole>- characterList: List&lt;Character&gt;</StartRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="3">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>886</X>
+          <Y>710</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1009</X>
+          <Y>710</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartRole>- originList: List&lt;OriginEnum&gt;</StartRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="6">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>886</X>
+          <Y>586</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1009</X>
+          <Y>586</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartRole>- roleList: List&lt;Role&gt;</StartRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="7" second="3">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1453</X>
+          <Y>836</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1289</X>
+          <Y>714</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>- origin: list&lt;Origin&gt;</StartRole>
+        <StartMultiplicity>0..*</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="10" second="5">
+        <Label>stores</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>+ user: User</StartRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="7">
+        <Label>manage</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>886</X>
+          <Y>934</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1317</X>
+          <Y>934</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>- character: Character</StartRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="5">
+        <Label>refers</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>+ user: User</StartRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="7" second="6">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1589</X>
+          <Y>841</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1341</X>
+          <Y>583</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>- role: list&lt;Role&gt;</StartRole>
+        <StartMultiplicity>0..*</StartMultiplicity>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
     </Relationships>
