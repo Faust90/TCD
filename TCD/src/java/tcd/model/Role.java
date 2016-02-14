@@ -1,5 +1,6 @@
 package tcd.model;
 
+import java.util.List;
 import tcd.utils.AttributeEnum;
 
 public class Role {
@@ -9,6 +10,7 @@ public class Role {
     private String roleDesc;
     private AttributeEnum primaryAttribute;
     private AttributeEnum secondaryAttribute;
+    private List<Skill> skillList;
 
     public int getRoleId() {
         return roleId;
@@ -50,5 +52,12 @@ public class Role {
         this.secondaryAttribute = secondaryAttribute;
     }
 
-    
+    public List<Skill> getSkillList() {
+        return skillList;
+    }
+
+    public void setSkillList(List<Skill> skillList) {
+        this.skillList = skillList;
+    }
+   
 }

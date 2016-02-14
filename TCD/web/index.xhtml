@@ -12,23 +12,21 @@
 
         <h:body>
             <h:form>
-                <p:accordionPanel>
-                    <p:tab title="Login">
-                        <h:panelGrid
-                            styleClass=""
-                            columns="2">
-
-                            <p:outputLabel value="Username: "/>
-                            <p:inputText/>
-                            <p:outputLabel value="Password:"/>
-                            <p:inputText/>     
-
-                        </h:panelGrid>
-                    </p:tab>
-                    <p:tab title="Nulla di che"/>
-                </p:accordionPanel>
+                <p:dataList
+                    value="#{charListBacking.characterList}"
+                    var="item"
+                    rows="10">
+                
+                    <p:column
+                        headerText="Nome">
+                        <p:outputLabel value="#{item.characterName}"/>
+                    </p:column>
+                
+                </p:dataList>
             </h:form>
         </h:body>
+        
+        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
     </f:view>
 </html>
 

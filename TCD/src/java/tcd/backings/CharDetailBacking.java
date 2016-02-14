@@ -1,6 +1,18 @@
 package tcd.backings;
 
-public class CharDetailBacking {
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
+import tcd.model.Role;
+import tcd.services.TCDServiceLocal;
+import tcd.utils.OriginEnum;
+
+@ManagedBean(name ="charDetailBacking")
+@SessionScoped
+public class CharDetailBacking implements Serializable{ 
 
     private int strenghtValue;
     private int agilityValue;
@@ -10,7 +22,20 @@ public class CharDetailBacking {
     private int roleSelectedValue;
     private int originSelectedValue;
     private int mediumHpValue;
-    private String nameValue;
+    private String nameValue;    
+    
+    private Character character;
+    
+    private List<Role> roleList;
+    private List<OriginEnum> originList;
+    
+    @ManagedProperty("#{tcdService}")
+    private TCDServiceLocal tcdService;
+    
+    @PostConstruct
+    public void init(){
+        
+    }
     
     public void saveCharacter() {
             throw new UnsupportedOperationException("The method is not implemented yet.");
@@ -144,6 +169,38 @@ public class CharDetailBacking {
         this.nameValue = nameValue;
     }
 
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
+    public List<OriginEnum> getOriginList() {
+        return originList;
+    }
+
+    public void setOriginList(List<OriginEnum> originList) {
+        this.originList = originList;
+    }
+
+    public TCDServiceLocal getTcdService() {
+        return tcdService;
+    }
+
+    public void setTcdService(TCDServiceLocal tcdService) {
+        this.tcdService = tcdService;
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
+    
     
     
 }

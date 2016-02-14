@@ -3,13 +3,18 @@ package tcd.auth;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean
+/**
+ * 
+ * @author Jacopo "Faust" Buttiglieri
+ */
+
+@ManagedBean(name ="login")
 @RequestScoped
 public class LoginBacking {
 
     private String loginUsername;
-
     private String loginPassword;
+    private User user;
 
     public void doLogin() {
         throw new UnsupportedOperationException("The method is not implemented yet.");
@@ -31,5 +36,12 @@ public class LoginBacking {
         this.loginPassword = loginPassword;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }   
 
 }
