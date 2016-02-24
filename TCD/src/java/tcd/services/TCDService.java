@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import tcd.auth.User;
 import java.util.*;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.faces.application.FacesMessage;
@@ -41,10 +40,12 @@ public class TCDService implements TCDServiceLocal,Serializable {
 
             if(conn == null)
                 throw new SQLException("Can't get connection");
-            
+                        
+            FacesMessage mess = new FacesMessage(conn.getSchema());
+            FacesContext.getCurrentInstance().addMessage(null, mess);
             
             //TODO
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM T_CHARACTERS");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM t_characters");
             
             ResultSet rs = statement.executeQuery();
             
