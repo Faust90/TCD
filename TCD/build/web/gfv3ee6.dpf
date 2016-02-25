@@ -5,8 +5,8 @@
     <session-manager persistence-type="memory"/>
   </session-config>
   <resource-ref>
-    <res-ref-name>jdbc/theDB</res-ref-name>
-    <jndi-name>jdbc/theDB</jndi-name>
+    <res-ref-name>jdbc/TCD</res-ref-name>
+    <jndi-name>jdbc/TCD</jndi-name>
   </resource-ref>
   <jsp-config/>
 </glassfish-web-app>

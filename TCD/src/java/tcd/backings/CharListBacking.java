@@ -41,9 +41,9 @@ public class CharListBacking implements Serializable{
             throw new UnsupportedOperationException("The method is not implemented yet.");
     }
 
-    public void retrieveCharactersList() {
+    private void retrieveCharactersList() {
         
-        characterList = tcdService.getCharacterList();
+        characterList = tcdService.getCharacterList(-1);
     }
 
     public void doLogout() {

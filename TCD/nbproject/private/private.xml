@@ -6,6 +6,7 @@
             <file>file:/D:/fbt/TCD/TCD/setup/sun-resources.xml</file>
             <file>file:/D:/fbt/TCD/TCD/web/WEB-INF/web.xml</file>
             <file>file:/D:/fbt/TCD/TCD/src/java/tcd/services/TCDService.java</file>
+            <file>file:/D:/fbt/TCD/TCD/web/WEB-INF/glassfish-web.xml</file>
             <file>file:/D:/fbt/TCD/TCD/src/java/tcd/services/TCDServiceLocal.java</file>
         </group>
     </open-files>

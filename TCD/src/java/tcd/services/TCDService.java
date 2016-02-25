@@ -27,43 +27,40 @@ public class TCDService implements TCDServiceLocal,Serializable {
     
     private Logger log;
 
+    /**
+     * Get all the user characters 
+     * 
+     * @param userId id of the current user
+     * @return the list of the user characters
+     */
     @Override
-    public List<Character> getCharacterList() {
-        
-        List<Character> resultList = new ArrayList<Character>();
+    public List<Character> getCharacterList(final int userId) {
         
         try{
-            if(ds == null)
-                throw new SQLException("Can't get Data Source");
+            List<Character> resultList = new ArrayList<>();
 
-            Connection conn = ds.getConnection();
+            ResultSet rs = doQuery("SELECT * FROM t_charactes"); 
 
-            if(conn == null)
-                throw new SQLException("Can't get connection");
-                        
-            FacesMessage mess = new FacesMessage(conn.getSchema());
-            FacesContext.getCurrentInstance().addMessage(null, mess);
-            
-            //TODO
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM t_characters");
-            
-            ResultSet rs = statement.executeQuery();
-            
             while(rs.next()){
-                
+
                 Character character = new Character();
-                
+
                 character.setCharacterName(rs.getString("CHARACTER_NAME"));
 
                 resultList.add(character);
             }
+
+            return resultList;
             
-        }catch(Exception e){
-            FacesMessage mess = new FacesMessage(e.getMessage());
+        }catch(SQLException e){
+            
+            //Print up a message if something went wrong
+            FacesMessage mess = new FacesMessage("getCharacterList: "+e.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, mess);
         }
-
-        return resultList;
+        
+        //If something went wrong, returns an empty list
+        return Collections.EMPTY_LIST;
     }
 
     @Override
@@ -83,6 +80,50 @@ public class TCDService implements TCDServiceLocal,Serializable {
 
     private List<Skill> getSkillList() {
             throw new UnsupportedOperationException("The method is not implemented yet.");
+    }
+
+    /**
+     * Sets up a db connection
+     * 
+     * @return a Connection instance
+     * @throws SQLException 
+     */
+    private Connection setConnection() throws SQLException {
+        
+        if(ds == null)
+            throw new SQLException("Can't get Data Source");
+
+        Connection conn = ds.getConnection();
+
+        if(conn == null)
+            throw new SQLException("Can't get connection");
+        
+        return conn;
+    }
+
+    /**
+     * Executes a query
+     * 
+     * @param query The query being executed
+     * @return the result set
+     * @throws SQLException 
+     */
+    private ResultSet doQuery(String query) throws SQLException {       
+        
+        //Tries to execute the query
+        try(Connection conn = setConnection()) {       
+
+            //Create the statement
+            PreparedStatement statement = conn.prepareStatement(query);   
+
+            //Extracts and returns the ResultSet
+            ResultSet rs = statement.executeQuery();
+            
+            return rs;
+
+        }catch(SQLException e){            
+            throw e;
+        }       
     }
 
 }

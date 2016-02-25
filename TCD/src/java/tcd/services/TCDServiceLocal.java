@@ -7,7 +7,7 @@ import tcd.model.Role;
 
 public interface TCDServiceLocal {
 
-    List<Character> getCharacterList();
+    List<Character> getCharacterList(final int userId);
 
     List<Role> getRoleList();
 
