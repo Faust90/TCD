@@ -39,7 +39,7 @@ public class TCDService implements TCDServiceLocal,Serializable {
         try{
             List<Character> resultList = new ArrayList<>();
 
-            ResultSet rs = doQuery("SELECT * FROM t_charactes"); 
+            ResultSet rs = doQuery("SELECT * FROM t_characters"); 
 
             while(rs.next()){
 
