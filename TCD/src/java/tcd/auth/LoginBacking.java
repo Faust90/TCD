@@ -1,5 +1,6 @@
 package tcd.auth;
 
+import java.util.Locale;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -15,6 +16,7 @@ public class LoginBacking {
     private String loginUsername;
     private String loginPassword;
     private User user;
+    private Locale currentLocale;
 
     public void doLogin() {
         throw new UnsupportedOperationException("The method is not implemented yet.");
@@ -44,4 +46,12 @@ public class LoginBacking {
         this.user = user;
     }   
 
+    public Locale getCurrentLocale() {
+        return currentLocale;
+    }
+
+    public void setCurrentLocale(Locale currentLocale) {
+        this.currentLocale = currentLocale;
+    }
+    
 }
