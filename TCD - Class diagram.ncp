@@ -8,9 +8,11 @@
         <Name>TCDService</Name>
         <Access>Public</Access>
         <Location left="1034" top="1166" />
-        <Size width="217" height="213" />
+        <Size width="217" height="247" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Datasource ds</Member>
+        <Member type="Field">private ResourceBundle bundle</Member>
+        <Member type="Method">public void init()</Member>
         <Member type="Method">public List&lt;Character&gt; getCharacterList()</Member>
         <Member type="Method">public List&lt;Role&gt; getRoleList()</Member>
         <Member type="Method">public void saveCharacter()</Member>
@@ -165,18 +167,8 @@
         <Collapsed>False</Collapsed>
         <Member type="Field">private String loginUsername</Member>
         <Member type="Field">private String loginPassword</Member>
-        <Member type="Field">private Locale currentLocale</Member>
         <Member type="Method">public void doLogin()</Member>
         <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Interface">
-        <Name>Localizable</Name>
-        <Access>Public</Access>
-        <Location left="1412" top="220" />
-        <Size width="162" height="113" />
-        <Collapsed>False</Collapsed>
-        <Member type="Method">String getLocalizedName()</Member>
-        <Member type="Method">String getLocalizedDesc()</Member>
       </Entity>
     </Entities>
     <Relationships>
@@ -226,18 +218,24 @@
         <EndMultiplicity>2</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="6" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="4">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -251,6 +249,8 @@
         <EndMultiplicity>6</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="9" second="7">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -264,6 +264,8 @@
         <EndMultiplicity>1..*</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="8" second="3">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -281,6 +283,8 @@
         <EndMultiplicity>1..*</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="8" second="6">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -370,26 +374,6 @@
         <StartRole>- role: Role</StartRole>
         <StartMultiplicity>0..*</StartMultiplicity>
         <EndMultiplicity>1</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Realization" first="4" second="11">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1493</X>
-          <Y>483</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>1493</X>
-          <Y>483</Y>
-        </BendPoint>
-      </Relationship>
-      <Relationship type="Realization" first="6" second="11">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1280</X>
-          <Y>483</Y>
-        </BendPoint>
       </Relationship>
     </Relationships>
   </ProjectItem>

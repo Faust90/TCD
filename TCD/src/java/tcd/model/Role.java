@@ -3,7 +3,7 @@ package tcd.model;
 import java.util.List;
 import tcd.utils.AttributeEnum;
 
-public class Role {
+public class Role{
 
     private int roleId;
     private String roleName;

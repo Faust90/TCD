@@ -10,6 +10,7 @@ public class Character {
     private int mediumHp;
     private int characterLevel;
     private String characterName;
+    private Role characterRole;
 
     public int getCharacterId() {
         return characterId;
@@ -75,5 +76,11 @@ public class Character {
         this.characterName = characterName;
     }
 
-        
+    public Role getCharacterRole() {
+        return characterRole;
+    }
+
+    public void setCharacterRole(Role characterRole) {
+        this.characterRole = characterRole;
+    }        
 }
