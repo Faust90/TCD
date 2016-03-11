@@ -30,8 +30,8 @@ public class TCDService implements TCDServiceLocal,Serializable {
     
     @PostConstruct
     public void init(){
-        Locale currentLocale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-        bundle = ResourceBundle.getBundle("resource.labels",currentLocale);
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        bundle = facesContext.getApplication().getResourceBundle(facesContext, "labels");
     }
     
     /**
@@ -46,7 +46,7 @@ public class TCDService implements TCDServiceLocal,Serializable {
         try{
             List<Character> resultList = new ArrayList<>();
             
-            //TODO
+            //TODO cambiare
             ResultSet rs = doQuery("SELECT * FROM t_characters"); 
 
             while(rs.next()){
@@ -74,7 +74,9 @@ public class TCDService implements TCDServiceLocal,Serializable {
         }catch(SQLException e){
             
             //Print up a message if something went wrong
-            FacesMessage mess = new FacesMessage("getCharacterList: "+e.getMessage());
+            FacesMessage mess = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                                                "Error",
+                                                "getCharacterList: "+e.getMessage());
             FacesContext.getCurrentInstance().addMessage("error", mess);
         }
         
@@ -145,18 +147,25 @@ public class TCDService implements TCDServiceLocal,Serializable {
         }       
     }
 
+    /**
+     * Localize a string
+     * 
+     * @param stringToLocalize the string to localize
+     * @return the localized string, or the string itself if there is a problem
+     * 
+     */
     private String localize(String stringToLocalize) {
         
         try{                     
             return bundle.getString(stringToLocalize);
-        }catch(NullPointerException e){
+        }catch(MissingResourceException e){
             
             //Print up a message if something went wrong
             Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-            FacesMessage mess = new FacesMessage("localize: no translation found "
-                                                 + "for locale:"+locale.getDisplayName()
-                                                 +" and label: "+stringToLocalize);
-            FacesContext.getCurrentInstance().addMessage("error", mess);
+            FacesMessage mess = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                                                "Error",
+                                                e.getMessage() + " for locale:"+locale.getDisplayName());
+            FacesContext.getCurrentInstance().addMessage(null, mess);
         }       
         
         return stringToLocalize;
