@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import tcd.auth.User;
 import java.util.*;
 import javax.annotation.PostConstruct;
@@ -17,6 +18,9 @@ import javax.sql.DataSource;
 import tcd.model.Character;
 import tcd.model.Role;
 import tcd.model.Skill;
+import tcd.utils.Parameter;
+import tcd.utils.QueryParams;
+import tcd.utils.TCDUtils;
 
 @ManagedBean(name ="tcdService")
 @SessionScoped
@@ -46,16 +50,19 @@ public class TCDService implements TCDServiceLocal,Serializable {
         try{
             List<Character> resultList = new ArrayList<>();
             
-            //TODO cambiare
-            ResultSet rs = doQuery("SELECT * FROM t_characters"); 
+            ResultSet rs = doQuery(TCDUtils.CHARACTERS_QUERY); 
 
             while(rs.next()){
 
                 Character character = new Character();
 
-                character.setCharacterName(rs.getString("CHARACTER_NAME"));                
+                character.setCharacterName(rs.getString("CHARACTER_NAME"));            
                 
-                ResultSet rs2 = doQuery("SELECT * FROM t_role WHERE ID_ROLE = "+rs.getInt("CHARACTER_ROLE")); 
+                //Adding parameters
+                QueryParams params = new QueryParams();                
+                params.add(Types.INTEGER,rs.getString("CHARACTER_ROLE"));
+                
+                ResultSet rs2 = doQuery(TCDUtils.ROLE_QUERY,params); 
                 rs2.next();
                 
                 Role r = new Role();
@@ -126,16 +133,22 @@ public class TCDService implements TCDServiceLocal,Serializable {
      * Executes a query
      * 
      * @param query The query being executed
+     * @param parameters the parameters of the query
      * @return the result set
      * @throws SQLException 
      */
-    private ResultSet doQuery(String query) throws SQLException {       
+    private ResultSet doQuery(String query,QueryParams parameters) throws SQLException{
         
         //Tries to execute the query
         try(Connection conn = setConnection()) {       
 
             //Create the statement
             PreparedStatement statement = conn.prepareStatement(query);   
+            
+            int parameterIndex = 1;
+            for (Parameter param : parameters.getParamList()) {
+                statement.setObject(parameterIndex, param.getValue(), param.getType());
+            }
 
             //Extracts and returns the ResultSet
             ResultSet rs = statement.executeQuery();
@@ -144,7 +157,21 @@ public class TCDService implements TCDServiceLocal,Serializable {
 
         }catch(SQLException e){            
             throw e;
-        }       
+        }   
+        
+    }
+    
+    /**
+     * Executes a query without parameters
+     * 
+     * @param query The query being executed
+     * @return the result set
+     * @throws SQLException 
+     */
+    private ResultSet doQuery(String query) throws SQLException {       
+        
+        //Executes the query without any params
+        return doQuery(query,TCDUtils.QUERY_EMPTY_PARAMS);
     }
 
     /**
