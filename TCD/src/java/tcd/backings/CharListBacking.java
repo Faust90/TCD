@@ -21,7 +21,7 @@ public class CharListBacking implements Serializable{
     
     private List<Character> characterList;
     
-//    @ManagedProperty("#{login.user}")
+    @ManagedProperty("#{login.user}")
     private User user;
     
     @ManagedProperty("#{tcdService}")
@@ -43,7 +43,7 @@ public class CharListBacking implements Serializable{
 
     private void retrieveCharactersList() {
         
-        characterList = tcdService.getCharacterList(-1);
+        characterList = tcdService.getCharacterList(user.getUserId());
     }
 
     public void doLogout() {

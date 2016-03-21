@@ -7,8 +7,8 @@
       <Entity type="Class">
         <Name>TCDService</Name>
         <Access>Public</Access>
-        <Location left="1034" top="1166" />
-        <Size width="217" height="264" />
+        <Location left="1034" top="1131" />
+        <Size width="217" height="281" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Datasource ds</Member>
         <Member type="Field">private ResourceBundle bundle</Member>
@@ -21,6 +21,7 @@
         <Member type="Method">private Connection setConnection()</Member>
         <Member type="Method">private ResultSet doQuery()</Member>
         <Member type="Method">private String localize()</Member>
+        <Member type="Method">public void errorMessage()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Interface">
@@ -168,7 +169,7 @@
         <Collapsed>False</Collapsed>
         <Member type="Field">private String loginUsername</Member>
         <Member type="Field">private String loginPassword</Member>
-        <Member type="Method">public void doLogin()</Member>
+        <Member type="Method">public String doLogin()</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
@@ -219,18 +220,24 @@
         <EndMultiplicity>2</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="6" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="4">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -244,6 +251,8 @@
         <EndMultiplicity>6</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="9" second="7">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -257,6 +266,8 @@
         <EndMultiplicity>1..*</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="8" second="3">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -274,6 +285,8 @@
         <EndMultiplicity>1..*</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="8" second="6">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">

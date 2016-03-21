@@ -13,6 +13,6 @@ public interface TCDServiceLocal {
 
     void saveCharacter();
 
-    User doLogin();
+    User doLogin(final String username,final String password);
 
 }

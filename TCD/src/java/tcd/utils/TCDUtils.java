@@ -22,7 +22,13 @@ public class TCDUtils {
      */
     final public static QueryParams QUERY_EMPTY_PARAMS = new QueryParams();
     
-    final public static String CHARACTERS_QUERY = "SELECT * FROM t_characters";
+    final public static String CHARACTERS_QUERY = "SELECT * FROM t_characters  WHERE CHARACTER_USER = ?";
     
     final public static String ROLE_QUERY = "SELECT * FROM t_role WHERE ID_ROLE = ?";
+    
+    final public static String LOGIN_QUERY =  "SELECT * FROM t_users WHERE USER_NAME = ? AND USER_PASSWORD = ?";
+    
+    final public static String LOGIN_PAGE = "index.xhtml";
+    
+    final public static String MAIN_PAGE = "mainPage.xhtml";
 }

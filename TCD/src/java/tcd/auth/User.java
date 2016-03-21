@@ -2,15 +2,15 @@ package tcd.auth;
 
 public class User {
 
-    private String userId;
+    private int userId;
     private String userName;
     private String password;
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

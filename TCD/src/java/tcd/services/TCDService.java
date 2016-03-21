@@ -50,24 +50,28 @@ public class TCDService implements TCDServiceLocal,Serializable {
         try{
             List<Character> resultList = new ArrayList<>();
             
-            ResultSet rs = doQuery(TCDUtils.CHARACTERS_QUERY); 
+            //Adding parameters
+            QueryParams charParams = new QueryParams();                
+            charParams.add(Types.INTEGER,String.valueOf(userId));
+            
+            ResultSet charResultSet = doQuery(TCDUtils.CHARACTERS_QUERY,charParams); 
 
-            while(rs.next()){
+            while(charResultSet.next()){
 
                 Character character = new Character();
 
-                character.setCharacterName(rs.getString("CHARACTER_NAME"));            
+                character.setCharacterName(charResultSet.getString("CHARACTER_NAME"));            
                 
                 //Adding parameters
-                QueryParams params = new QueryParams();                
-                params.add(Types.INTEGER,rs.getString("CHARACTER_ROLE"));
+                QueryParams roleParams = new QueryParams();                
+                roleParams.add(Types.INTEGER,charResultSet.getString("CHARACTER_ROLE"));
                 
-                ResultSet rs2 = doQuery(TCDUtils.ROLE_QUERY,params); 
-                rs2.next();
+                ResultSet roleResultSet = doQuery(TCDUtils.ROLE_QUERY,roleParams); 
+                roleResultSet.next();
                 
                 Role r = new Role();
                 
-                String roleName = rs2.getString("ROLE_NAME");
+                String roleName = roleResultSet.getString("ROLE_NAME");
                 
                 r.setRoleName(localize(roleName));
                 
@@ -78,13 +82,9 @@ public class TCDService implements TCDServiceLocal,Serializable {
 
             return resultList;
             
-        }catch(SQLException e){
-            
+        }catch(SQLException e){            
             //Print up a message if something went wrong
-            FacesMessage mess = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                                                "Error",
-                                                "getCharacterList: "+e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("error", mess);
+            errorMessage("getCharacterList: "+e.getMessage());
         }
         
         //If something went wrong, returns an empty list
@@ -102,8 +102,36 @@ public class TCDService implements TCDServiceLocal,Serializable {
     }
 
     @Override
-    public User doLogin() {
-            throw new UnsupportedOperationException("The method is not implemented yet.");
+    public User doLogin(final String username,final String password){
+        //Esegue la query per username e password
+        //ritorna null se la login è fallita.
+        
+        
+        QueryParams params = new QueryParams();
+        params.add(Types.VARCHAR, username);
+        params.add(Types.VARCHAR, password);
+        
+        try{
+        
+            ResultSet resultSet = doQuery(TCDUtils.LOGIN_QUERY, params);
+            
+            if(!resultSet.next())
+                throw new Exception();
+            
+            User loggedUser = new User();
+            
+            loggedUser.setUserName(resultSet.getString("USER_NAME"));
+            loggedUser.setPassword(resultSet.getString("USER_PASSWORD"));
+            loggedUser.setUserId(resultSet.getInt("ID_USER"));            
+            
+            return loggedUser;
+        }catch(SQLException e){
+            errorMessage("doLogin: "+ e.getMessage());
+        }catch(Exception ex){
+            errorMessage("Username o Password non corretti");
+        }
+        
+        return null;
     }
 
     private List<Skill> getSkillList() {
@@ -148,6 +176,7 @@ public class TCDService implements TCDServiceLocal,Serializable {
             int parameterIndex = 1;
             for (Parameter param : parameters.getParamList()) {
                 statement.setObject(parameterIndex, param.getValue(), param.getType());
+                parameterIndex++;
             }
 
             //Extracts and returns the ResultSet
@@ -189,13 +218,23 @@ public class TCDService implements TCDServiceLocal,Serializable {
             
             //Print up a message if something went wrong
             Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-            FacesMessage mess = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                                                "Error",
-                                                e.getMessage() + " for locale:"+locale.getDisplayName());
-            FacesContext.getCurrentInstance().addMessage(null, mess);
+            errorMessage(e.getMessage() + " for locale:"+locale.getDisplayName());
         }       
         
         return stringToLocalize;
+    }
+
+    /**
+     * Used to print on screen error messages
+     * 
+     * @param errorMessage the message to be shown
+     */
+    private void errorMessage(String errorMessage) {
+
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                                                "Error", 
+                                                errorMessage);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
 }

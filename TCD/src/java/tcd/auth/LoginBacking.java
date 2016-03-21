@@ -2,7 +2,10 @@ package tcd.auth;
 
 import java.util.Locale;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
+import tcd.services.TCDServiceLocal;
+import tcd.utils.TCDUtils;
 
 /**
  * 
@@ -10,16 +13,24 @@ import javax.faces.bean.RequestScoped;
  */
 
 @ManagedBean(name ="login")
-@RequestScoped
+@SessionScoped
 public class LoginBacking {
 
     private String loginUsername;
     private String loginPassword;
     private User user;
-    private Locale currentLocale;
+    private Locale currentLocale;    
+    
+    @ManagedProperty("#{tcdService}")
+    private TCDServiceLocal tcdService;
 
-    public void doLogin() {
-        throw new UnsupportedOperationException("The method is not implemented yet.");
+    public String doLogin() {
+       user = tcdService.doLogin(loginUsername,loginPassword);
+       
+       if(user != null)
+           return TCDUtils.MAIN_PAGE;
+       
+       return TCDUtils.LOGIN_PAGE;
     }
 
     public String getLoginUsername() {
@@ -53,5 +64,13 @@ public class LoginBacking {
     public void setCurrentLocale(Locale currentLocale) {
         this.currentLocale = currentLocale;
     }
+
+    public TCDServiceLocal getTcdService() {
+        return tcdService;
+    }
+
+    public void setTcdService(TCDServiceLocal tcdService) {
+        this.tcdService = tcdService;
+    } 
     
 }
