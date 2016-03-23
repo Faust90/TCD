@@ -23,13 +23,13 @@
                         <p:password value="#{login.loginPassword}" />
                     </p:panel> 
                     
-                <p:commandButton value="Login" action="#{login.doLogin}" />
+                <p:commandButton value="Login" action="#{login.doLogin}"/>
             </h:form>
-        </h:body>       
-        
-        <!-- Tag dei messaggi -->
-        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-        
+            
+            <!-- Tag dei messaggi -->
+            <p:messages id="loginMessages" for="loginMessages" showDetail="true" autoUpdate="true" closable="true" />
+            
+        </h:body>           
     </f:view>
 </html>
 

@@ -84,7 +84,8 @@ public class TCDService implements TCDServiceLocal,Serializable {
             
         }catch(SQLException e){            
             //Print up a message if something went wrong
-            errorMessage("getCharacterList: "+e.getMessage());
+            errorMessage(TCDUtils.MAIN_PAGE_MESSAGE,
+                        "getCharacterList: "+e.getMessage());
         }
         
         //If something went wrong, returns an empty list
@@ -126,9 +127,11 @@ public class TCDService implements TCDServiceLocal,Serializable {
             
             return loggedUser;
         }catch(SQLException e){
-            errorMessage("doLogin: "+ e.getMessage());
+            errorMessage(TCDUtils.LOGIN_PAGE_MESSAGE,
+                        "doLogin: "+ e.getMessage());
         }catch(Exception ex){
-            errorMessage("Username o Password non corretti");
+            errorMessage(TCDUtils.LOGIN_PAGE_MESSAGE,
+                        "Username o Password non corretti");
         }
         
         return null;
@@ -218,7 +221,8 @@ public class TCDService implements TCDServiceLocal,Serializable {
             
             //Print up a message if something went wrong
             Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-            errorMessage(e.getMessage() + " for locale:"+locale.getDisplayName());
+            errorMessage(TCDUtils.MAIN_PAGE_MESSAGE,
+                        e.getMessage() + " for locale:"+locale.getDisplayName());
         }       
         
         return stringToLocalize;
@@ -229,12 +233,12 @@ public class TCDService implements TCDServiceLocal,Serializable {
      * 
      * @param errorMessage the message to be shown
      */
-    private void errorMessage(String errorMessage) {
+    private void errorMessage(String messageID, String errorMessage) {
 
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                                                 "Error", 
                                                 errorMessage);
-        FacesContext.getCurrentInstance().addMessage(null, message);
+        FacesContext.getCurrentInstance().addMessage(messageID, message);
     }
 
 }

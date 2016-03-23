@@ -31,4 +31,8 @@ public class TCDUtils {
     final public static String LOGIN_PAGE = "index.xhtml";
     
     final public static String MAIN_PAGE = "mainPage.xhtml";
+    
+    public static String MAIN_PAGE_MESSAGE = "mainMessages";
+    
+    public static String LOGIN_PAGE_MESSAGE = "loginMessages";
 }

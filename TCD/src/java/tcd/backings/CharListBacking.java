@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import tcd.auth.User;
 import tcd.model.Character;
 import tcd.services.TCDServiceLocal;
@@ -16,7 +16,7 @@ import tcd.services.TCDServiceLocal;
  */
 
 @ManagedBean(name ="charListBacking")
-@SessionScoped
+@ViewScoped
 public class CharListBacking implements Serializable{
     
     private List<Character> characterList;
