@@ -6,7 +6,11 @@ public enum AttributeEnum {
     AGILITY(2,"attribute.agility"),
     TOUGHNESS(3,"attribute.toughness"),
     MIND(4,"attribute.mind");
-    
+
+    private static Exception MissingResourceException(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     private int idAttribute;
     private String attributeName;
 
@@ -29,7 +33,16 @@ public enum AttributeEnum {
 
     public void setAttributeName(String attributeName) {
         this.attributeName = attributeName;
-    }
+    }    
     
+    public static AttributeEnum getValue(int value) throws IllegalArgumentException {
+      
+        for(AttributeEnum att : AttributeEnum.values()){
+            if(value == att.getIdAttribute()){
+                return att;
+            }
+        }        
+        throw new IllegalArgumentException("No Attribute found for value "+ value);
+    }
     
 }

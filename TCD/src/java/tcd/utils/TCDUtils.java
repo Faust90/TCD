@@ -5,8 +5,12 @@
  */
 package tcd.utils;
 
+import java.util.Collections;
+import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
+import tcd.utils.OriginEnum;
 
 /**
  * Application costants
@@ -22,9 +26,14 @@ public class TCDUtils {
      */
     final public static QueryParams QUERY_EMPTY_PARAMS = new QueryParams();
     
-    final public static String CHARACTERS_QUERY = "SELECT * FROM t_characters  WHERE CHARACTER_USER = ?";
+    final public static String CHARACTERS_QUERY = "SELECT "
+                                                + " * "
+                                                + "FROM "
+                                                + " V_CHARACTER_LIST "
+                                                + "WHERE "
+                                                + " CHARACTER_USER = ?";
     
-    final public static String ROLE_QUERY = "SELECT * FROM t_role WHERE ID_ROLE = ?";
+    final public static String ROLE_QUERY = "SELECT * FROM t_role";
     
     final public static String LOGIN_QUERY =  "SELECT * FROM t_users WHERE USER_NAME = ? AND USER_PASSWORD = ?";
     
@@ -32,7 +41,7 @@ public class TCDUtils {
     
     final public static String MAIN_PAGE = "mainPage.xhtml";
     
-    public static String MAIN_PAGE_MESSAGE = "mainMessages";
+    final public static String MAIN_PAGE_MESSAGE = "mainMessages";
     
-    public static String LOGIN_PAGE_MESSAGE = "loginMessages";
+    final public static String LOGIN_PAGE_MESSAGE = "loginMessages";    
 }

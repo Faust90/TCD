@@ -1,6 +1,8 @@
 package tcd.model;
 
-public class Skill {
+import java.io.Serializable;
+
+public class Skill implements Serializable{
 
     private int skillId;
     private int skillLevel;

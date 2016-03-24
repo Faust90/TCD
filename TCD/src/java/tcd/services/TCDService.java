@@ -18,6 +18,7 @@ import javax.sql.DataSource;
 import tcd.model.Character;
 import tcd.model.Role;
 import tcd.model.Skill;
+import tcd.utils.AttributeEnum;
 import tcd.utils.Parameter;
 import tcd.utils.QueryParams;
 import tcd.utils.TCDUtils;
@@ -62,16 +63,9 @@ public class TCDService implements TCDServiceLocal,Serializable {
 
                 character.setCharacterName(charResultSet.getString("CHARACTER_NAME"));            
                 
-                //Adding parameters
-                QueryParams roleParams = new QueryParams();                
-                roleParams.add(Types.INTEGER,charResultSet.getString("CHARACTER_ROLE"));
-                
-                ResultSet roleResultSet = doQuery(TCDUtils.ROLE_QUERY,roleParams); 
-                roleResultSet.next();
-                
                 Role r = new Role();
                 
-                String roleName = roleResultSet.getString("ROLE_NAME");
+                String roleName = charResultSet.getString("ROLE_NAME");
                 
                 r.setRoleName(localize(roleName));
                 
@@ -92,9 +86,43 @@ public class TCDService implements TCDServiceLocal,Serializable {
         return Collections.EMPTY_LIST;
     }
 
+    /**
+     * Get all the available role
+     */
     @Override
     public List<Role> getRoleList() {
-            throw new UnsupportedOperationException("The method is not implemented yet.");
+        try{
+            
+            List<Role> roleList = new ArrayList<>();
+            
+            ResultSet roleListResult = doQuery(TCDUtils.ROLE_QUERY);            
+            
+            while(roleListResult.next()){
+                
+                Role r = new Role();
+                
+                String roleName = localize(roleListResult.getString("ROLE_NAME"));
+                String roleDesc = localize(roleListResult.getString("ROLE_DESC"));
+                AttributeEnum primary = AttributeEnum.getValue(roleListResult.getInt("PRIMARY_ATTRIBUTE"));
+                AttributeEnum secondary = AttributeEnum.getValue(roleListResult.getInt("SECONDARY_ATTRIBUTE"));
+                
+                r.setRoleId(roleListResult.getInt("ID_ROLE"));
+                r.setRoleName(roleName);
+                r.setRoleDesc(roleDesc);
+                r.setPrimaryAttribute(primary);
+                r.setSecondaryAttribute(secondary);
+                
+                roleList.add(r);
+            }
+            
+            return roleList;
+            
+        }catch(SQLException | IllegalArgumentException e){
+            errorMessage(TCDUtils.MAIN_PAGE_MESSAGE,
+                        "getRoleList: "+ e.getMessage());
+        }
+                
+        return Collections.EMPTY_LIST;
     }
 
     @Override
@@ -102,11 +130,15 @@ public class TCDService implements TCDServiceLocal,Serializable {
             throw new UnsupportedOperationException("The method is not implemented yet.");
     }
 
+    /**
+     * Logs the user
+     *
+     * @param username the username to search
+     * @param password the password of the user
+     * @return the user found, or else null
+     */
     @Override
     public User doLogin(final String username,final String password){
-        //Esegue la query per username e password
-        //ritorna null se la login è fallita.
-        
         
         QueryParams params = new QueryParams();
         params.add(Types.VARCHAR, username);

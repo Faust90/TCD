@@ -11,5 +11,5 @@ public enum OriginEnum {
     MERCHANT,
     HOSPITALER,
     DUELIST,
-    RUNIST
+    RUNIST;
 }

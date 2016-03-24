@@ -1,9 +1,10 @@
 package tcd.model;
 
+import java.io.Serializable;
 import java.util.List;
 import tcd.utils.AttributeEnum;
 
-public class Role{
+public class Role implements Serializable{
 
     private int roleId;
     private String roleName;
@@ -58,6 +59,5 @@ public class Role{
 
     public void setSkillList(List<Skill> skillList) {
         this.skillList = skillList;
-    }
-   
+    }   
 }

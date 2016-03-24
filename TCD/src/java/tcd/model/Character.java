@@ -1,6 +1,8 @@
 package tcd.model;
 
-public class Character {
+import java.io.Serializable;
+
+public class Character implements Serializable{
 
     private int characterId;
     private int strenght;

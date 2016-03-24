@@ -1,17 +1,18 @@
 package tcd.backings;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import tcd.model.Role;
 import tcd.services.TCDServiceLocal;
 import tcd.utils.OriginEnum;
 
 @ManagedBean(name ="charDetailBacking")
-@SessionScoped
+@ViewScoped
 public class CharDetailBacking implements Serializable{ 
 
     private int strenghtValue;
@@ -19,8 +20,8 @@ public class CharDetailBacking implements Serializable{
     private int toughnessValue;
     private int mindValue;
     private int unassignedAttributePoints;
-    private int roleSelectedValue;
-    private int originSelectedValue;
+    private Role roleSelectedValue;
+    private OriginEnum originSelectedValue;
     private int mediumHpValue;
     private String nameValue;    
     
@@ -34,7 +35,8 @@ public class CharDetailBacking implements Serializable{
     
     @PostConstruct
     public void init(){
-        
+        roleList = tcdService.getRoleList();
+        originList = Arrays.asList(OriginEnum.values());
     }
     
     public void saveCharacter() {
@@ -137,19 +139,19 @@ public class CharDetailBacking implements Serializable{
         this.unassignedAttributePoints = unassignedAttributePoints;
     }
 
-    public int getRoleSelectedValue() {
+    public Role getRoleSelectedValue() {
         return roleSelectedValue;
     }
 
-    public void setRoleSelectedValue(int roleSelectedValue) {
+    public void setRoleSelectedValue(Role roleSelectedValue) {
         this.roleSelectedValue = roleSelectedValue;
     }
 
-    public int getOriginSelectedValue() {
+    public OriginEnum getOriginSelectedValue() {
         return originSelectedValue;
     }
 
-    public void setOriginSelectedValue(int originSelectedValue) {
+    public void setOriginSelectedValue(OriginEnum originSelectedValue) {
         this.originSelectedValue = originSelectedValue;
     }
 
@@ -177,6 +179,7 @@ public class CharDetailBacking implements Serializable{
         this.roleList = roleList;
     }
 
+
     public List<OriginEnum> getOriginList() {
         return originList;
     }
@@ -185,6 +188,7 @@ public class CharDetailBacking implements Serializable{
         this.originList = originList;
     }
 
+   
     public TCDServiceLocal getTcdService() {
         return tcdService;
     }
@@ -199,8 +203,5 @@ public class CharDetailBacking implements Serializable{
 
     public void setCharacter(Character character) {
         this.character = character;
-    }
-    
-    
-    
+    }       
 }
